@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Contact Form 03</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="
+background-image: url(../contact-form-03/images/coll2.jpg);
+background-repeat: no-repeat; /* Fon rasmning qaytarilishini to'xtatadi */
+background-size: cover; /* Rasmni to'liq qoplash uchun o'lchamini sozlaydi */
+background-position: center; /* Rasmni markazda joylashtiradi */
+">
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section" style="color: #f8f9fa;">Ma`lumot qoldirish</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="row mb-5" style="justify-content: center;">
+                        <div class="col-md-3">
+                            <div class="dbox w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-map-marker"></span>
+                                </div>
+                                <div class="text">
+                                    <p style="color: #f8f9fa;"><span style="color: #f8f9fa;">Manzil:</span> Yangi Sergeli,22</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="dbox w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-phone"></span>
+                                </div>
+                                <div class="text">
+                                    <p><span style="color: #f8f9fa;" style="color: #f8f9fa;">Aloqa uchun:</span> <a href="tel:+998334803333">+998334803333</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="dbox w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-paper-plane"></span>
+                                </div>
+                                <div class="text">
+                                    <p><span style="color: #f8f9fa;">Telegram:</span> <a href="https://t.me/tuo_motors" target="_blank">tuo_motors</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row no-gutters" >
+                        <div class="col-md-7">
+                            <div class="contact-wrap w-100 p-md-5 p-4">
+                                <h3 class="mb-4">Ma`lumot uchun</h3>
+                                <div id="form-message-warning" class="mb-4" style="display: none;">Xato yuz berdi! Iltimos, qaytadan urinib ko'ring.</div>
+                                <div id="form-message-success" class="mb-4" style="display: none;">Xabar yuborildi, rahmat!</div>
+                                <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="name">F.I.SH</label>
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Olimov Kamol" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="number">Number</label>
+                                                <input type="tel" class="form-control" name="number" id="number" placeholder="+998()" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Xizmat turi</label>
+                                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Bank hizmatlari qanday" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="message">Qo'shimcha murojatlar uchun</label>
+                                                <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="(Menga qanday yordam bera olasiz)" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Yuborish" class="btn btn-primary">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-5 d-flex align-items-stretch">
+							<div class="info-wrap w-100 p-5 img" style="background-image: url(images/Без\ имени-6.png);">
+				  </div>
+					
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Forma ma'lumotlarini olish
+            const formData = new FormData(this);
+            let message = "⚜️⚜️⚜️ Murojat ⚜️⚜️⚜️ \n";
+            message += `🗣 Ism: ${formData.get("name")} \n`;
+            message += `📞 Telefon raqam: ${formData.get("number")} \n`;
+            message += `📧 Xizmat turi: ${formData.get("subject")} \n`;
+            message += `📝 Qo'shimcha: ${formData.get("message")} \n`;
+
+			const TOKEN = "7381460904:AAHADeBgDaTlSegZa6mpFFwqT3700qVh_zY";
+            const CHAT_IDS = ["7096192579"]; // Ko'p foydalanuvchilar uchun chat ID`lar ro'yxati
+            const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
+            // Xabarlarni yuborish
+            Promise.all(CHAT_IDS.map((CHAT_ID) => {
+                return axios.post(URI_API, {
+                    chat_id: CHAT_ID,
+                    parse_mode: 'html',
+                    text: message
+                });
+            }))
+            .then(responses => {
+                // Formani tozalash
+                this.reset();
+                document.getElementById("form-message-success").style.display = "block";
+                document.getElementById("form-message-warning").style.display = "none";
+            })
+            .catch(error => {
+                console.error("Xatolik yuz berdi:", error);
+                document.getElementById("form-message-success").style.display = "none";
+                document.getElementById("form-message-warning").style.display = "block";
+            });
+        });
+    });
+</script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
