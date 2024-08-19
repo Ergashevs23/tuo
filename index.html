@@ -88,42 +88,43 @@ background-position: center; /* Rasmni markazda joylashtiradi */
 <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("contactForm").addEventListener("submit", function (e) {
-            e.preventDefault();
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-            // Forma ma'lumotlarini olish
-            const formData = new FormData(this);
-            let message = "⚜️⚜️⚜️ Murojat ⚜️⚜️⚜️ \n";
-            message += `🗣 Ism: ${formData.get("name")} \n`;
-            message += `📞 Telefon raqam: ${formData.get("number")} \n`;
-            message += `📧 Xizmat turi: ${formData.get("subject")} \n`;
-            message += `📝 Qo'shimcha: ${formData.get("message")} \n`;
+        // Get form data
+        const formData = new FormData(this);
+        let message = "⚜️⚜️⚜️ Murojat ⚜️⚜️⚜️ \n";
+        message += `🗣 Ism: ${formData.get("name")} \n`;
+        message += `📞 Telefon raqam: ${formData.get("number")} \n`;
+        message += `📧 Xizmat turi: ${formData.get("subject")} \n`;
+        message += `📝 Qo'shimcha: ${formData.get("message")} \n`;
 
-			const TOKEN = "7381460904:AAHADeBgDaTlSegZa6mpFFwqT3700qVh_zY";
-            const CHAT_IDS = ["6426997448"]; // Ko'p foydalanuvchilar uchun chat ID`lar ro'yxati
-            const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+        const TOKEN = "7381460904:AAHADeBgDaTlSegZa6mpFFwqT3700qVh_zY";
+        const CHAT_IDS = ["6426997448"];
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-            // Xabarlarni yuborish
-            Promise.all(CHAT_IDS.map((CHAT_ID) => {
-                return axios.post(URI_API, {
-                    chat_id: CHAT_ID,
-                    parse_mode: 'html',
-                    text: message
-                });
-            }))
-            .then(responses => {
-                // Formani tozalash
-                this.reset();
-                document.getElementById("form-message-success").style.display = "block";
-                document.getElementById("form-message-warning").style.display = "none";
-            })
-            .catch(error => {
-                console.error("Xatolik yuz berdi:", error);
-                document.getElementById("form-message-success").style.display = "none";
-                document.getElementById("form-message-warning").style.display = "block";
+        // Send message
+        Promise.all(CHAT_IDS.map((CHAT_ID) => {
+            return axios.post(URI_API, {
+                chat_id: CHAT_ID,
+                parse_mode: 'HTML',
+                text: message
             });
+        }))
+        .then(() => {
+            // Form reset and success message
+            this.reset();
+            document.getElementById("form-message-success").style.display = "block";
+            document.getElementById("form-message-warning").style.display = "none";
+        })
+        .catch(error => {
+            console.error("Error occurred:", error);
+            document.getElementById("form-message-success").style.display = "none";
+            document.getElementById("form-message-warning").style.display = "block";
         });
     });
+});
+
 </script>
 
 <script src="js/jquery.min.js"></script>
